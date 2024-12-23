@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #8e9eab, #eef2f3);
+}
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+.navbar-heading h1 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+}
+.navbar-links {
+    display: flex;
+}
+.navbar-links a {
+    color: #fff;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+.navbar-links a:hover {
+    text-decoration: none;
+    color: #8e9eab;
+}
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #8e9eab, #eef2f3);
+}
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.profile-card {
+    background-color: #fff;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.profile-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #eee;
+}
+.profile-name {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+}
+.profile-email {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+}
+.profile-role {
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.edit-profile-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.edit-profile-button:hover {
+    background-color: #45a049;
+}
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    gap: 20px;
+}
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+.header {
+    margin: 0;
+}
+.login-form {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #833ab4;
+    color: white;
+    cursor: pointer;
+}
+.login-form .create-account {
+    background-color: #fcb045;
+}
+.separator {
+    color: #666;
+    margin: 20px 0;
+}
+.flex-center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.registration-container {
+    width: 40%;
+    min-width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.registration-form h2 {
+    color: #833ab4;
+    text-align: center;
+}
+.registration-form span {
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.registration-form input[type="text"],
+.registration-form input[type="password"] {
+    width: calc(50% - 4px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.registration-form input[type="text"]:nth-child(3),
+.registration-form input[type="password"] {
+    width: 100%;
+}
+.name-field {
+    display: flex;
+    justify-content: space-between;
+}
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f09433;
+    background-image: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.registration-form button:hover {
+    opacity: 0.9;
+}

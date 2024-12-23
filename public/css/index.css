@@ -1,0 +1,25 @@
+.welcome-banner {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: slideIn 0.5s forwards;
+}
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.welcome-message {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+}
+.welcome-banner.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
