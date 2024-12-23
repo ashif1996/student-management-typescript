@@ -3,10 +3,32 @@
   "version": "1.0.0",
   "description": "A TypeScript-based CRUD application for managing students. It includes features for adding, updating, fetching, and deleting student data, with asynchronous operations and API integration. Implements dependency injection for modularity and ensures proper request/response modeling with robust error handling.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/app.js",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc",
+    "serve": "npm run build && npm start"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.9.2"
+  },
+  "devDependencies": {
+    "@types/express-ejs-layouts": "^2.5.4",
+    "@types/express-session": "^1.18.1",
+    "@types/node": "^22.10.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
 }
