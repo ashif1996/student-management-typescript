@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">
+        <%= user.firstName %> <%= user.lastName %>
+    </h1>
+    <div class="btn-toolbar mb-2 mb-md-0"> <!-- Corrected class name from mb-md 0 to mb-md-0 -->
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        </div>
+    </div>
+</div>
+
+<div class="col py-3">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">
+                        <%= user.firstName %> <%= user.lastName %>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col text-end fw-lighter">
+            <b>Last updated: <%= new Date(user.updatedAt).toUTCString() %></b>
+        </div>
+    </div>
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col" style="max-width:140px"><b>Name:</b></div>
+            <div class="col">
+                <%= user.firstName %> <%= user.lastName %>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col" style="max-width:140px"><b>Email:</b></div>
+            <div class="col">
+                <%= user.email %>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col" style="max-width:140px"><b>Created at:</b></div>
+            <div class="col">
+                <%= new Date(user.createdAt).toUTCString() %>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col" style="max-width:140px"><b>Updated at:</b></div>
+            <div class="col">
+                <%= new Date(user.updatedAt).toUTCString() %>
+            </div>
+        </div>
+    </li>
+</ul>

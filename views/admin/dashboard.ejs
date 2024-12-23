@@ -1,0 +1,107 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <a href="/admin/addUser" class="btn btn-sm btn-outline-secondary">+ New User</a>
+      </div>
+      <a href="/admin/logout" class="btn btn-sm btn-outline-secondary">Logout</a>
+    </div>
+  </div>
+  
+  <% if (success.length > 0) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= success %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+  
+  <% if (error.length > 0) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= error %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+  
+  <% if (messages.length > 0) { %>
+    <% messages.forEach((element) => { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= element %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% }); %>
+  <% } %>
+  
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">isAdmin</th>
+          <th scope="col" class="text-end">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach((element) => { %>
+          <tr class="align-middle">
+            <td><%= element.firstName %></td>
+            <td><%= element.lastName %></td>
+            <td><%= element.email %></td>
+            <td><%= element.isAdmin ? 'Yes' : 'No' %></td>
+            <td class="text-end">
+              <div class="d-flex flex-row justify-content-end gap-2">
+                <a href="/admin/viewUser/<%= element._id %>" class="btn btn-primary btn-small" aria-label="View">
+                  <i class="bi bi-eye"></i>
+                </a>
+                <a href="/admin/editUser/<%= element._id %>" class="btn btn-warning btn-small" aria-label="Edit">
+                  <i class="bi bi-pencil"></i>
+                </a>
+                <form action="/admin/deleteUser/<%= element._id %>" method="POST" class="position-relative">
+                  <button type="submit" class="btn btn-danger btn-small" aria-label="Delete">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <nav aria-label="Dashboard Pagination">
+    <ul class="pagination justify-content-center mt-5">
+      <!-- First Page Link -->
+      <% if (current > 1) { %>
+        <li class="page-item">
+          <a href="/?page=1" class="page-link">First</a>
+        </li>
+      <% } else { %>
+        <li class="page-item disabled">
+          <span class="page-link">First</span>
+        </li>
+      <% } %>
+      
+      <!-- Dynamic Pagination Links -->
+      <% for (let i = Math.max(1, current - 4); i <= Math.min(current + 4, pages); i++) { %>
+        <% if (i === Number(current)) { %>
+          <li class="page-item active" aria-current="page">
+            <span class="page-link"><%= i %></span>
+          </li>
+        <% } else { %>
+          <li class="page-item"><a href="/?page=<%= i %>" class="page-link"><%= i %></a></li>
+        <% } %>
+      <% } %>
+      
+      <!-- Last Page Link -->
+      <% if (current < pages) { %>
+        <li class="page-item">
+          <a href="/?page=<%= pages %>" class="page-link">Last</a>
+        </li>
+      <% } else { %>
+        <li class="page-item disabled">
+          <span class="page-link">Last</span>
+        </li>
+      <% } %>
+    </ul>
+  </nav>

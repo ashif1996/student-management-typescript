@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Editing: <%= user.firstName %> <%= user.lastName %></h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button class="btn btn-sm btn-outline-secondary">?</button>
+        </div>
+    </div>
+</div>
+
+<div class="col py-3">
+    <div class="row">
+        <!-- Breadcrumb -->
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><%= user.firstName %> <%= user.lastName %></li>
+                </ol>
+            </nav>
+        </div>
+        <!-- User Details -->
+        <div class="col text-end fw-lighter">
+            <b>Last Updated:</b> <%= new Date(user.updatedAt).toUTCString() %><br>
+            <b>UserId:</b> <%= user._id %>
+        </div>
+    </div>
+</div>
+
+<!-- User Edit Form -->
+<form action="/admin/editUser/<%= user._id %>?_method=PUT" method="POST">
+    <div class="row form-group mb-4">
+        <div class="col">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" value="<%= user.firstName %>" placeholder="First Name" required>
+        </div>
+        <div class="col">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" value="<%= user.lastName %>" placeholder="Last Name" required>
+        </div>
+    </div>
+    <div class="row form-group mb-4">
+        <div class="col">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>" placeholder="Email" required>
+        </div>
+    </div>
+    <div class="form-group mb-4">
+        <button type="submit" class="btn btn-primary">Update User</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">Delete User</button>
+    </div>
+</form>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                This will permanently remove the User record of <b><%= user.firstName %> <%= user.lastName %></b>. Are you sure?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="/admin/deleteUser/<%= user._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Yes, Remove User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

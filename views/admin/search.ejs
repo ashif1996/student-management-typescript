@@ -1,0 +1,51 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Search</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <a href="/admin/addUser" class="btn btn-sm btn-outline-secondary">+ New User</a>
+      </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <% if (users && users.length > 0) { %> <!-- Ensure 'users' is defined and has elements -->
+    
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th> <!-- Added a header for the actions column -->
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(element => { %> <!-- Changed 'user' to 'users' to match the array -->
+            <tr class="align-middle">
+              <td><%= element.firstName %></td>
+              <td><%= element.lastName %></td>
+              <td><%= element.email %></td>
+              <td>
+                <div class="d-flex flex-row justify-content-end gap-2">
+                    <a href="/admin/viewUser/<%= element._id %>" class="btn btn-primary btn-small">
+                      <i class="bi bi-eye"></i>
+                    </a>
+                    <a href="/admin/editUser/<%= element._id %>" class="btn btn-warning btn-small">
+                      <i class="bi bi-pencil"></i>
+                    </a>
+                    <form action="/admin/deleteUser/<%= element._id %>" method="POST" class="d-inline"> <!-- Corrected the form action -->
+                      <button type="submit" class="btn btn-danger btn-small">
+                        <i class="bi bi-trash"></i> <!-- Changed icon to 'bi-trash' for delete -->
+                      </button>
+                    </form>
+                </div>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+  
+    <% } else { %>
+      <h2>No results found.</h2>
+    <% } %>
+</div>

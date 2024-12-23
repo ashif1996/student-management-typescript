@@ -1,0 +1,23 @@
+<div class="login-wrapper">
+    <div class="header text-center">
+        <h1>User Management System</h1>
+    </div>
+
+    <div class="login-container">
+        <% if (error && error.length > 0) { %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= error %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+
+        <form action="/admin/login" method="post" class="login-form">
+            <span style="font-size: 18px;">Log in to UMS</span>
+            <input type="text" name="email" placeholder="Email" required>
+            <input type="password" name="pwd" placeholder="Password" required>
+            <button type="submit">Log In</button>
+            <div class="separator">or</div>
+            <a href="/admin/register"><button type="button" class="create-account">Create New Account</button></a>
+        </form>
+    </div>
+</div>
