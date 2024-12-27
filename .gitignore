@@ -1,5 +1,14 @@
-// Node
+# environment variables
+.env
+
+# Ignore node_modules
 node_modules/
 
-// environment variables
-.env
+# Ignore compiled JS files
+dist/
+
+# Ignore TypeScript declaration files
+*.d.ts
+
+# Ignore source maps
+*.js.map

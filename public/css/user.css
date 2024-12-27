@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #8e9eab, #eef2f3);
 }
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
@@ -147,40 +148,36 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .registration-container {
     width: 40%;
     min-width: 300px;
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .registration-form h2 {
     color: #833ab4;
     text-align: center;
 }
+
 .registration-form span {
     display: block;
     margin-bottom: 20px;
-    text-align: center;
 }
+
 .registration-form input[type="text"],
 .registration-form input[type="password"] {
-    width: calc(50% - 4px);
+    width: 100%; /* Ensure inputs take full width */
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
 }
-.registration-form input[type="text"]:nth-child(3),
-.registration-form input[type="password"] {
-    width: 100%;
-}
-.name-field {
-    display: flex;
-    justify-content: space-between;
-}
+
 .registration-form button {
     width: 100%;
     padding: 10px;
@@ -193,6 +190,38 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
+
 .registration-form button:hover {
     opacity: 0.9;
+}
+
+.name-field {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.name-field div {
+    width: 48%;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    text-align: left; /* Align the error message to the left */
+    display: block;
+    width: 100%;
+}
+
+.error-border {
+    border: 1px solid red !important;
+}
+
+.flash-messages {
+    width: 100%; /* Match the width of the column */
+    max-width: 600px; /* Limit the width */
+    margin: 0 auto 20px auto; /* Center horizontally and add bottom margin */
+    text-align: center; /* Center text inside */
 }

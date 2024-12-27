@@ -1,0 +1,8 @@
+<div class="profile-container">
+    <div class="profile-card">
+        <h2 class="profile-name"><%= user.firstName %> <%= user.lastName %></h2>
+        <p class="profile-email"><%= user.email %></p>
+        <p class="profile-role"><%= user.isAdmin ? "Administrator" : "User" %></p>
+        <button class="edit-profile-button"><a href="/" style="text-decoration: none; color: #fff;">Home</a></button>
+    </div>
+</div>

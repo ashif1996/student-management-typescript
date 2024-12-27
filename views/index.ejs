@@ -1,4 +1,8 @@
 <link rel="stylesheet" href="/css/index.css">
 <section class="welcome-banner">
-    <h2 class="welcome-message">Welcome back, <%= user.firstName + ' ' + user.lastName %></h2>
+    <% if (user) { %>
+        <h2 class="welcome-message">Welcome back, <%= user.firstName + ' ' + user.lastName %></h2>
+    <% } else { %>
+        <h2 class="welcome-message">Welcome back, Ashif</h2>
+    <% } %>
 </section>

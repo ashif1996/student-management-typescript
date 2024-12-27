@@ -4,15 +4,29 @@
     </div>
 
     <div class="login-container">
-        
-
-        <form action="/users/login" method="post" class="login-form">
+        <div class="flash-messages mb-4">
+            <% if (successMessage && successMessage.length > 0) { %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%= successMessage %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+            <% if (errorMessage && errorMessage.length > 0) { %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= errorMessage %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+        </div>
+        <form action="/user/login" method="post" class="login-form">
             <span style="font-size: 18px;">Log in to UMS</span>
             <input type="text" name="email" placeholder="Email" required>
-            <input type="password" name="pwd" placeholder="Password" required>
+            <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Log In</button>
             <div class="separator">or</div>
-            <a href="/users/signup"><button type="button" class="create-account">Create New Account</button></a>
+            <a href="/user/signup"><button type="button" class="create-account">Create New Account</button></a>
         </form>
     </div>
 </div>
+
+<script src="/js/authValidation.js"></script>

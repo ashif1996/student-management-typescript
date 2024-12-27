@@ -1,0 +1,44 @@
+<div class="mt-5">
+    
+</div>
+<div class="flex-center-container mt-5">
+    <div class="registration-container">
+        <form id="registrationForm" class="registration-form" action="/user/signup" method="post">
+            <h2>Create an Account</h2>
+            <span class="text-center" style="font-size: 18px;">It's quick and easy.</span>
+            
+            <!-- First Name and Last Name -->
+            <div class="name-field">
+                <div>
+                    <input name="firstName" type="text" placeholder="First Name" id="firstname">
+                    <span id="firstnameError" class="error-message"></span> <!-- Error message -->
+                </div>
+                <div>
+                    <input name="lastName" type="text" placeholder="Last Name" id="lastname">
+                    <span id="lastnameError" class="error-message"></span> <!-- Error message -->
+                </div>
+            </div>
+            
+            <!-- Email -->
+            <div>
+                <input name="email" type="text" placeholder="example@gmail.com" id="email">
+                <span id="emailError" class="error-message"></span> <!-- Error message -->
+            </div>
+
+            <!-- Password -->
+            <div>
+                <input name="pwd" type="password" placeholder="New password" id="pwd">
+                <span id="pwdError" class="error-message"></span> <!-- Error message -->
+            </div>
+
+            <!-- Confirm Password -->
+            <div>
+                <input name="pwdConf" type="password" placeholder="Confirm password" id="pwdConf">
+                <span id="pwdConfError" class="error-message"></span> <!-- Error message -->
+            </div>            
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>    
+</div>
+
+<script src="/js/authValidation.js"></script>
