@@ -12,3 +12,6 @@ dist/
 
 # Ignore source maps
 *.js.map
+
+# Ignore compiled clientside JS files
+public/js/*.js
