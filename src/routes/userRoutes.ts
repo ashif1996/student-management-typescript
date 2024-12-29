@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 
+import { isUser } from "../middlewares/authMiddlewares.js";
 import userControllers from "../controllers/userControllers.js";
 
 router.route("/login")
@@ -10,5 +11,9 @@ router.route("/login")
 router.route("/signup")
     .get(userControllers.getUserSignup)
     .post(userControllers.userSignup);
+
+router.get("/logout", userControllers.userLogout);
+
+router.get("/profile", isUser, userControllers.getProfile);
 
 export default router;
