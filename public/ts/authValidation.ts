@@ -1,18 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const registrationForm = document.getElementById("registrationForm");
-    if (!(registrationForm instanceof HTMLFormElement)) {
-        throw new Error("Registration form not found or invalid.");
-    }
-
-    const loginForm = document.getElementById("loginForm");
-    if (!(loginForm instanceof HTMLFormElement)) {
-        throw new Error("Login form not found or invalid.");
-    }
-
-    const editProfileForm = document.getElementById("editProfileForm");
-    if (!(editProfileForm instanceof HTMLFormElement)) {
-        throw new Error("Edit profile form not found or invalid.");
-    }
+    const registrationForm = document.getElementById("registrationForm") as HTMLFormElement | null;
+    const loginForm = document.getElementById("loginForm") as HTMLFormElement | null;
+    const editProfileForm = document.getElementById("editProfileForm") as HTMLFormElement | null;
 
     const displayErrors = (fieldId: string, message: string): void => {
         const errorElement = document.getElementById(`${fieldId}Error`);
@@ -75,15 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const firstnameInput = document.getElementById("firstname");
         const lastnameInput = document.getElementById("lastname");
         const emailInput = document.getElementById("email");
-        const passwordInput = document.getElementById("pwd");
-        const confirmPasswordInput = document.getElementById("pwdConf");
+        const passwordInput = isSignupForm ? document.getElementById("pwd") : null;
+        const confirmPasswordInput = isSignupForm ? document.getElementById("pwdConf") : null;
 
         if (
             !(firstnameInput instanceof HTMLInputElement) ||
             !(lastnameInput instanceof HTMLInputElement) ||
             !(emailInput instanceof HTMLInputElement) ||
-            !(passwordInput instanceof HTMLInputElement) ||
-            !(confirmPasswordInput instanceof HTMLInputElement)
+            (isSignupForm && (!(passwordInput instanceof HTMLInputElement) || !(confirmPasswordInput instanceof HTMLInputElement)))
         ) {
             throw new Error("Required fields are missing.");
         }
@@ -91,8 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const firstname: string = firstnameInput.value.trim();
         const lastname: string = lastnameInput.value.trim();
         const email: string = emailInput.value.trim();
-        const password: string = passwordInput.value.trim();
-        const confirmPassword: string = confirmPasswordInput.value.trim();
         let isValid: boolean = true;
 
         clearErrors();
@@ -130,7 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
             isValid = false;
         }
 
-        if (isSignupForm) {
+        if (isSignupForm && passwordInput instanceof HTMLInputElement && confirmPasswordInput instanceof HTMLInputElement) {
+            const password: string = passwordInput.value.trim();
+            const confirmPassword: string = confirmPasswordInput.value.trim();
+
             // Validate password
             if (!password) {
                 displayErrors("pwd", "Password is required.");
