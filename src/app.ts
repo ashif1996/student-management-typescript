@@ -10,6 +10,7 @@ import express from "express";
 import session from "express-session";
 import flash from "connect-flash";
 import expressLayouts from "express-ejs-layouts";
+import methodOverride from "method-override";
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use((req: express.Request, res: express.Response, next: express.NextFunction
     res.locals.errorMessage = req.flash("error");
     next();
 });
+app.use(methodOverride("_method"));
 
 import indexRoutes from "./routes/indexRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
