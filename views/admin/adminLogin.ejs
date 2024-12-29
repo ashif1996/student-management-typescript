@@ -4,20 +4,30 @@
     </div>
 
     <div class="login-container">
-        <% if (error && error.length > 0) { %>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%;">
-                <%= error %>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <% } %>
+        <div class="flash-messages mb-4">
+            <% if (successMessage && successMessage.length > 0) { %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%= successMessage %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+            <% if (errorMessage && errorMessage.length > 0) { %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= errorMessage %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+        </div>
 
-        <form action="/admin/login" method="post" class="login-form">
+        <form action="/admin/login" method="post" id="loginForm" class="login-form">
             <span style="font-size: 18px;">Log in to UMS</span>
-            <input type="text" name="email" placeholder="Email" required>
-            <input type="password" name="pwd" placeholder="Password" required>
+            <input type="text" name="email" id="email" placeholder="Email">
+            <span id="emailError" class="error-message"></span>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <span id="passwordError" class="error-message"></span>
             <button type="submit">Log In</button>
-            <div class="separator">or</div>
-            <a href="/admin/register"><button type="button" class="create-account">Create New Account</button></a>
         </form>
     </div>
 </div>
+
+<script src="/js/authValidation.js"></script>

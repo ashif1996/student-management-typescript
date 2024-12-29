@@ -1,44 +1,48 @@
 <div class="mt-5">
-    <% if (success.length > 0) { %>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <%= success %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <% } %>
-    <% if (error.length > 0) { %>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <%= error %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <% } %>
+    <div class="flash-messages mb-4">
+        <% if (successMessage && successMessage.length > 0) { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= successMessage %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+        <% if (errorMessage && errorMessage.length > 0) { %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <%= errorMessage %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+    </div>
 </div>
 <div class="container card py-5 my-5" style="max-width: 550px;">
-    <h1>
+    <h2>
         <%= locals.title %>
-    </h1>
-    <form action="/admin/addUser" method="post">
-        <div class="row g-3 mb-4">
+    </h2>
+    <form action="/admin/addUser" method="post" id="registrationForm">
+        <div class="row g-3 mb-4 mt-3">
             <div class="col-md-6">
-                <label for="firstName" class="form-label">First Name</label>
-                <input name="firstName" type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                <input name="firstName" type="text" class="form-control" id="firstname" placeholder="First Name">
+                <span id="firstnameError" class="error-message"></span>
             </div>
             <div class="col-md-6">
-                <label for="lastName" class="form-label">Last Name</label>
-                <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                <input name="lastName" type="text" class="form-control" id="lastname" placeholder="Last Name">
+                <span id="lastnameError" class="error-message"></span>
             </div>
         </div>
-        <label for="email" class="form-label">email</label>
-        <input name="email" type="email" class="form-control" id="email" placeholder="example@gmail.com" required>
+        <input name="email" type="email" class="form-control mb-4" id="email" placeholder="example@gmail.com">
+        <span id="emailError" class="error-message"></span>
         <div class="row g-3 mb-4">
             <div class="col-md-6">
-                <label for="pwd" class="form-label">Password</label>
-                <input name="pwd" type="password" class="form-control" id="pwd" required>
+                <input name="pwd" type="password" class="form-control" id="pwd" placeholder="Password">
+                <span id="pwdError" class="error-message"></span>
             </div>
             <div class="col-md-6">
-                <label for="pwdConf" class="form-label">password confirmation</label>
-                <input name="pwdConf" type="password" class="form-control" id="pwdConf" required>
+                <input name="pwdConf" type="password" class="form-control" id="pwdConf" placeholder="Confirm Password">
+                <span id="pwdConfError" class="error-message"></span>
             </div>
         </div>
         <button type="submit" class="btn btn-primary my-2">Submit</button>
     </form>
 </div>
+
+<script src="/js/authValidation.js"></script>

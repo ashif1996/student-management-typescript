@@ -8,28 +8,20 @@
     </div>
   </div>
   
-  <% if (success.length > 0) { %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <%= success %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% } %>
-  
-  <% if (error.length > 0) { %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <%= error %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% } %>
-  
-  <% if (messages.length > 0) { %>
-    <% messages.forEach((element) => { %>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <%= element %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <% }); %>
-  <% } %>
+  <div class="flash-messages mb-4">
+    <% if (successMessage && successMessage.length > 0) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= successMessage %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+    <% if (errorMessage && errorMessage.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= errorMessage %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+</div>
   
   <div class="table-responsive">
     <table class="table table-striped table-sm">

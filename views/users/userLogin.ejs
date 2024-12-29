@@ -18,10 +18,12 @@
                 </div>
             <% } %>
         </div>
-        <form action="/user/login" method="post" class="login-form">
+        <form action="/user/login" method="post" id="loginForm" class="login-form">
             <span style="font-size: 18px;">Log in to UMS</span>
-            <input type="text" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="email" id="email" placeholder="Email">
+            <span id="emailError" class="error-message"></span>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <span id="passwordError" class="error-message"></span>
             <button type="submit">Log In</button>
             <div class="separator">or</div>
             <a href="/user/signup"><button type="button" class="create-account">Create New Account</button></a>
