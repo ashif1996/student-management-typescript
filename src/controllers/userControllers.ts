@@ -18,12 +18,12 @@ const getUserLogin = (req: Request, res: Response): void => {
     });
 };
 
-const userLogin = async (req: Request, res: Response) => {
+const userLogin = async (req: Request, res: Response): Promise<void> => {
     const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ email })
-            .select("_id email firstName lastName password")
+        const user = await User.findOne({ email, isAdmin: false })
+            .select("_id email firstName lastName isAdmin password")
             .lean();
 
         if (!user) {
@@ -36,7 +36,7 @@ const userLogin = async (req: Request, res: Response) => {
             });
         }
 
-        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        const isPasswordMatch: boolean = await bcrypt.compare(password, user.password);
         if (!isPasswordMatch) {
             return showFlashMessages({
                 req,
@@ -55,14 +55,7 @@ const userLogin = async (req: Request, res: Response) => {
             isAdmin: user.isAdmin,
         };
 
-        return showFlashMessages({
-            req,
-            res,
-            type: "success",
-            message: "Login successful!",
-            status: httpStatusCodes.OK,
-            redirectUrl: "/",
-        });
+        res.status(httpStatusCodes.OK).redirect("/");
     } catch (error) {
         console.error("Error verifying the credentials:", error as Error);
 
@@ -84,7 +77,7 @@ const getUserSignup = (req: Request, res: Response): void => {
     });
 };
 
-const userSignup = async (req: Request, res: Response) => {
+const userSignup = async (req: Request, res: Response): Promise<void> => {
     const { firstName, lastName, email, pwd, pwdConf } = req.body;
 
     try  {
@@ -137,9 +130,58 @@ const userSignup = async (req: Request, res: Response) => {
     }
 };
 
+const userLogout = (req: Request, res: Response): void => {
+    req.session.destroy((error) => {
+        if (error) {
+            console.log("Error destroying the session:", error as Error);
+        }
+
+        return res.redirect("/user/login");
+    });
+};
+
+const getProfile = async (req: Request, res: Response): Promise<void> => {
+    const locals: Locals = { title: 'User Profile' };
+    const email: string | null = req.session?.user?.email || null;
+
+    try {
+        const user = await User.findOne({ email })
+            .select("_id email firstName lastName")
+            .lean();
+
+        if (!user) {
+            return showFlashMessages({
+                req,
+                res,
+                message: "User not found.",
+                status: httpStatusCodes.NOT_FOUND,
+                redirectUrl: "/user/login",
+            });
+        }
+
+        res.render("users/profile", {
+            locals,
+            layout: "layouts/userLayout",
+            user,
+        });
+    } catch (error) {
+        console.error("An error occurred:", error as Error);
+
+        return showFlashMessages({
+            req,
+            res,
+            message: "An error occurred. Please try again later.",
+            status: httpStatusCodes.INTERNAL_SERVER_ERROR,
+            redirectUrl: "/",
+        });
+    }
+};
+
 export default {
     getUserLogin,
     userLogin,
     getUserSignup,
     userSignup,
+    userLogout,
+    getProfile,
 };
