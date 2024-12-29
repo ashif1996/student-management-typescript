@@ -9,5 +9,12 @@ declare module "express-session" {
             lastName: string;
             isAdmin: boolean;
         };
+        admin?: {
+            _id: object;
+            email: string;
+            firstName: string;
+            lastName: string;
+            isAdmin: boolean;
+        };
     }
 }
