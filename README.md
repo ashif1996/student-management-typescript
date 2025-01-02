@@ -1,6 +1,3 @@
-Great! Here's an updated README file incorporating your **scripts** for starting the server:
-
-```markdown
 # 🎓 Student Management System (TypeScript)
 
 This **Student Management System** is a full-stack application built using **TypeScript**, providing functionalities for managing student records. The project leverages modern TypeScript features along with Express.js for routing, validation, and user authentication. It demonstrates real-world usage of **CRUD operations**, **authentication**, and **role-based access**.
