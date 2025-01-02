@@ -1,7 +1,7 @@
 {
   "name": "student-management-typescript",
   "version": "1.0.0",
-  "description": "A TypeScript-based CRUD application for managing students. It includes features for adding, updating, fetching, and deleting student data, with asynchronous operations and API integration. Implements dependency injection for modularity and ensures proper request/response modeling with robust error handling.",
+  "description": "A TypeScript-based CRUD application for managing students. It includes features for adding, updating, fetching, and deleting student data, with asynchronous operations and API integration.",
   "main": "app.js",
   "type": "module",
   "scripts": {
